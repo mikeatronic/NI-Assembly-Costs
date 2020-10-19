@@ -20,6 +20,7 @@ namespace niac.Controllers
         {
             _logger = logger;
             _HttpClientFactory = httpClientFactory;
+
         }
 
         public IActionResult Index()
