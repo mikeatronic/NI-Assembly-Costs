@@ -1,0 +1,90 @@
+﻿@model niac.Models.Member
+@{
+    ViewData["Title"] = "Details";
+}
+<section>
+    <header>
+        <h1>Member detail</h1>
+    </header>
+    <article>
+
+        <img src="@Model.MemberImgUrl" alt="Alternate Text" class="img-rounded" />
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.MemberName)
+            @Model.MemberPrefix @Model.MemberName
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.MemberTitle)
+            @Model.MemberTitle
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.PartyName)
+            @Model.PartyName
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.ConstituencyName)
+            @Model.ConstituencyName
+        </div>
+
+
+        @*@Model.AffiliationId*@
+
+        <h2>Contact details</h2>
+
+        @foreach (var item in Model.MemberContacts)
+        {
+            <p>
+                Town: @item.Address1
+
+
+            </p>
+
+            <p>
+                City @item.TownCity
+
+            </p>
+
+        }
+
+
+
+
+
+        <h2>Questions</h2>
+
+        <table class="table table-bordered table-condensed">
+            <thead>
+                <tr>
+                    <th>
+
+
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                <tr>
+
+                    <td></td>
+
+
+                </tr>
+
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+    </article>
+</section>

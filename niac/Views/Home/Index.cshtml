@@ -1,0 +1,47 @@
+﻿@model niac.ViewModel.MemberViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Current MLAs</h1>
+
+<span class="sr-only" id="tableDescription">Table of current mlas</span>
+<table class="table table-bordered table-hover table-striped table-condensed" id="memberTable" aria-describedby="">
+    <thead>
+        <tr>
+            <th scope="col"><span class="sr-only">Mla Picture</span></th>
+            <th scope="col">Name</th>
+            <th scope="col">Id</th>
+            <th scope="col">Party</th>
+            <th scope="col">2018/2019  Wages</th>
+            <th scope="col">2018/2019 Expenses</th>
+            <th scope="col">
+                <a href="#" data-trigger="hover" data-toggle="popover" title="Note" data-content="Wages data currently isn't available from the NI Assembly">2019/2020  Wages</a>
+            </th>
+            <th scope="col">
+                <a href="#" data-trigger="hover" data-toggle="popover" title="Note" data-content="Year 2019 - 2020 (Figures for first three Quarters: April 2019 - December 2019)"> 2019/2020 Expenses</a>
+            </th>
+            <th scope="col">Overall Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.MemberList)
+        {
+          <tr>
+              <td>
+                  <img src="@item.MemberImgUrl" alt="Member @item.MemberFirstName @item.MemberLastName picture" title="Picture of mla @item.MemberFirstName @item.MemberLastName" />
+              </td>
+              <td><a href="@Url.Action("Details", "Home", new { id = item.PersonId })">@item.MemberFirstName @item.MemberLastName</a></td>
+              <td>@item.PersonId</td>
+              <td>
+                  <a href="@item.PartyOrganisationId">@item.PartyName</a>
+              </td>
+              <td>@item.EighteenNineteenSalary.ToString("c", new System.Globalization.CultureInfo("en-gb"))</td>
+              <td>@item.EighteenNineteenExpenses.ToString("c", new System.Globalization.CultureInfo("en-gb"))</td>
+              <td>Not Available</td>
+              <td>@item.NineteenTwentyExpenses.ToString("c", new System.Globalization.CultureInfo("en-gb"))</td>
+              <td>@item.TotalSalaryExpensesCosts.ToString("c", new System.Globalization.CultureInfo("en-gb"))</td>
+          </tr>
+        }
+    </tbody>
+</table>
