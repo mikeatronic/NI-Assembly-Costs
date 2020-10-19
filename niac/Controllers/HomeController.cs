@@ -29,9 +29,6 @@ namespace niac.Controllers
 
             var client = _HttpClientFactory.CreateClient("NiacClient");
 
-            //  client.DefaultRequestHeaders.Accept.Clear();
-            //  client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
             var response = client.GetAsync("members_json.ashx?m=GetAllCurrentMembers").Result;
 
             if (response.IsSuccessStatusCode)
