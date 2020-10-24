@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text.Json.Serialization;
 
 namespace niac.Models
 {
@@ -49,6 +50,12 @@ namespace niac.Models
         public decimal NineteenTwentyExpenses { get; set; }
         public decimal TotalSalaryExpensesCosts { get; set; }
         public List<Member> MemberContacts { get; set; }
+
+        public int TotalQuestionsAsked { get; set; }
+
+        [JsonPropertyName("Question")]
+        public List<Question> Question { get; set; }
+
     }
 
     public class AllMembersList

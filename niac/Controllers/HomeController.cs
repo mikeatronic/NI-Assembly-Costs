@@ -20,7 +20,6 @@ namespace niac.Controllers
         {
             _logger = logger;
             _HttpClientFactory = httpClientFactory;
-
         }
 
         public IActionResult Index()
@@ -30,10 +29,6 @@ namespace niac.Controllers
             var client = _HttpClientFactory.CreateClient("NiacClient");
 
             var response = client.GetAsync("members_json.ashx?m=GetAllCurrentMembers").Result;
-
-
-
-            string password = "asdasdasd";
 
             if (response.IsSuccessStatusCode)
             {
@@ -127,15 +122,43 @@ namespace niac.Controllers
                     }
                 }
             }
-            else
+
+
+            var responseQuestions = client.GetAsync("questions_json.ashx?m=GetQuestionsByMember&personId=" + id).Result;
+
+            if (responseQuestions.IsSuccessStatusCode)
             {
-                throw new HttpRequestException("Api not available");
+                using (HttpContent content = responseQuestions.Content)
+                {
+                    var result = content.ReadAsStringAsync();
+
+                    RootQuestionObject r = JsonConvert.DeserializeObject<RootQuestionObject>(result.Result);
+
+                    model.TotalQuestionsAsked = r.QuestionsList.Question.Count;
+
+                    model.Question = new List<Question>();
+
+                    foreach (var question in r.QuestionsList.Question.Take(5).OrderByDescending(i => i.TabledDate))
+                    {
+                        Question newQuestion = new Question();
+
+                        newQuestion.TabledDate = question.TabledDate;
+                        newQuestion.QuestionDetails = question.QuestionDetails;
+                        newQuestion.QuestionText = question.QuestionText;
+                        newQuestion.QOralAnswerRequested = question.QOralAnswerRequested;
+                        newQuestion.DepartmentName = question.DepartmentName;
+
+                        model.Question.Add(newQuestion);
+                    }
+                }
             }
 
             GetAddress(model);
 
             return View(model);
         }
+
+
 
         private Member GetAddress(Member member)
         {
@@ -161,18 +184,12 @@ namespace niac.Controllers
                         memberContacts.TownCity = memb.TownCity;
                         memberContacts.Postcode = memb.Postcode;
                         member.MemberContacts.Add(memberContacts);
-
                     }
                 }
-            }
-            else
-            {
-                throw new HttpRequestException("Api not available");
             }
 
             return member;
         }
-
 
         public IActionResult Privacy()
         {

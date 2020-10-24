@@ -11,7 +11,6 @@
         <tr>
             <th scope="col"><span class="sr-only">Mla Picture</span></th>
             <th scope="col">Name</th>
-            <th scope="col">Id</th>
             <th scope="col">Party</th>
             <th scope="col">2018/2019  Wages</th>
             <th scope="col">2018/2019 Expenses</th>
@@ -32,7 +31,7 @@
                   <img src="@item.MemberImgUrl" alt="Member @item.MemberFirstName @item.MemberLastName picture" title="Picture of mla @item.MemberFirstName @item.MemberLastName" />
               </td>
               <td><a href="@Url.Action("Details", "Home", new { id = item.PersonId })">@item.MemberFirstName @item.MemberLastName</a></td>
-              <td>@item.PersonId</td>
+
               <td>
                   <a href="@item.PartyOrganisationId">@item.PartyName</a>
               </td>

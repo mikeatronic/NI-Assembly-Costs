@@ -57,34 +57,31 @@
 
         <h2>Questions</h2>
 
+        <p>Total Questions Asked: @Model.TotalQuestionsAsked</p>
+
         <table class="table table-bordered table-condensed" aria-describedby="tableDescription">
             <thead>
                 <tr>
-                    <th scope="col">
-
-
-                    </th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Question text</th>
+                    <th scope="col">Question Detail</th>
+                    <th scope="col">Oral AQ</th>
+                    <th scope="col">Date Tabled</th>
                 </tr>
             </thead>
             <tbody>
 
-
-                <tr>
-
-                    <td></td>
-
-
-                </tr>
-
+                @foreach (var item in Model.Question)
+                {
+                    <tr>
+                        <td>@item.DepartmentName</td>
+                        <td>@item.QuestionText</td>
+                        <td>@item.QuestionDetails</td>
+                        <td>@item.QOralAnswerRequested</td>
+                        <td>@item.TabledDate.ToShortDateString()</td>
+                    </tr>
+                }
             </tbody>
         </table>
-
-
-
-
-
-
-
-
     </article>
 </section>
