@@ -138,7 +138,7 @@ namespace niac.Controllers
 
                     model.Question = new List<Question>();
 
-                    foreach (var question in r.QuestionsList.Question.Take(5).OrderByDescending(i => i.TabledDate))
+                    foreach (var question in r.QuestionsList.Question)
                     {
                         Question newQuestion = new Question();
 
@@ -157,8 +157,6 @@ namespace niac.Controllers
 
             return View(model);
         }
-
-
 
         private Member GetAddress(Member member)
         {
