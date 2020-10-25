@@ -147,7 +147,6 @@ namespace niac.Controllers
                         model.Question.Add(newQuestion);
                     }
                 }
-
             }
 
             GetAddress(model);
