@@ -16,12 +16,11 @@ namespace niac.Controllers
         [HttpGet]
         public IActionResult Detail(int id)
         {
-
             QuestionViewModel model = new QuestionViewModel();
 
             var client = _HttpClientFactory.CreateClient("NiacClient");
 
-            var response = client.GetAsync("members_json.ashx?m=GetAllCurrentMembers").Result;
+            var response = client.GetAsync("questions_json.ashx?m=GetQuestionDetails&documentId=" + id).Result;
 
             if (response.IsSuccessStatusCode)
             {

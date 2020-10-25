@@ -5,8 +5,6 @@ namespace niac.ViewModel
 {
     public class OrganisationViewModel
     {
-
         public List<Organisation> OrganisationList { get; set; }
-
     }
 }

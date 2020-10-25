@@ -75,14 +75,14 @@
 
                 @foreach (var item in Model.Question)
                 {
-                <tr>
-                    <td>@item.DepartmentName</td>
-                    <td>@item.QuestionText</td>
-                    <td>@item.QOralAnswerRequested</td>
-                    <td>@item.TabledDate.ToShortDateString()</td>
-                    <th><a href="@item.QuestionDetails">Source</a></th>
-                    <td><a href="@Url.Action("Detail","Question", new { id = item.DepartmentId})">Detail</a></td>
-                </tr>
+                   <tr>
+                       <td>@item.DepartmentName</td>
+                       <td>@item.QuestionText</td>
+                       <td>@item.QOralAnswerRequested</td>
+                       <td>@item.TabledDate.ToShortDateString()</td>
+                       <th><a href="@item.QuestionDetails">Source</a></th>
+                       <td><a href="@Url.Action("Detail","Question", new { id = item.DocumentId })">Detail</a></td>
+                   </tr>
                 }
             </tbody>
         </table>

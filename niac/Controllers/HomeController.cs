@@ -143,6 +143,7 @@ namespace niac.Controllers
                         newQuestion.QuestionText = question.QuestionText;
                         newQuestion.QOralAnswerRequested = question.QOralAnswerRequested;
                         newQuestion.DepartmentName = question.DepartmentName;
+                        newQuestion.DocumentId = question.DocumentId;
 
                         model.Question.Add(newQuestion);
                     }
