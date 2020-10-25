@@ -1,8 +1,7 @@
 ﻿using System;
-
-namespace niac.ViewModel
+namespace niac.Models.Answers
 {
-    public class QuestionViewModel
+    public class Question
     {
         public string DocumentId { get; set; }
         public string DocumentType { get; set; }
@@ -24,5 +23,15 @@ namespace niac.ViewModel
         public string DepartmentID { get; set; }
         public string AnswerOpenXml { get; set; }
         public string AnswerHtml { get; set; }
+    }
+
+    public class QuestionsList
+    {
+        public Question Question { get; set; }
+    }
+
+    public class AnswerRoot
+    {
+        public QuestionsList QuestionsList { get; set; }
     }
 }
