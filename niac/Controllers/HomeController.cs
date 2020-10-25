@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using niac.DataSets;
 using niac.Models;
@@ -13,12 +12,10 @@ namespace niac.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IHttpClientFactory _HttpClientFactory;
 
-        public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClientFactory)
+        public HomeController(IHttpClientFactory httpClientFactory)
         {
-            _logger = logger;
             _HttpClientFactory = httpClientFactory;
         }
 
