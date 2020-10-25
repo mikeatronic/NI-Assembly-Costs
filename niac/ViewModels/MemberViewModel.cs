@@ -6,5 +6,6 @@ namespace niac.ViewModel
     public class MemberViewModel
     {
         public List<Member> MemberList { get; set; }
+
     }
 }
