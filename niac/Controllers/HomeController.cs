@@ -119,10 +119,6 @@ namespace niac.Controllers
                 }
             }
 
-
-
-
-
             var responseQuestions = client.GetAsync("questions_json.ashx?m=GetQuestionsByMember&personId=" + id).Result;
 
             if (responseQuestions.IsSuccessStatusCode)
