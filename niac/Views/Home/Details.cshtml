@@ -59,27 +59,30 @@
 
         <p>Total Questions Asked: @Model.TotalQuestionsAsked</p>
 
-        <table class="table table-bordered table-condensed" aria-describedby="tableDescription" id="questionTable">
+        <table class="table table-bordered table-condensed" id="questionTable">
+            <caption>Table displaying all the current MLA'S questions</caption>
             <thead>
                 <tr>
                     <th scope="col">Department</th>
                     <th scope="col">Question text</th>
-                    <th scope="col">Question Detail</th>
                     <th scope="col">Oral AQ</th>
                     <th scope="col">Date Tabled</th>
+                    <th scope="col">Source</th>
+                    <th scope="col">Detail</th>
                 </tr>
             </thead>
             <tbody>
 
                 @foreach (var item in Model.Question)
                 {
-                    <tr>
-                        <td>@item.DepartmentName</td>
-                        <td>@item.QuestionText</td>
-                        <td>@item.QuestionDetails</td>
-                        <td>@item.QOralAnswerRequested</td>
-                        <td>@item.TabledDate.ToShortDateString()</td>
-                    </tr>
+                <tr>
+                    <td>@item.DepartmentName</td>
+                    <td>@item.QuestionText</td>
+                    <td>@item.QOralAnswerRequested</td>
+                    <td>@item.TabledDate.ToShortDateString()</td>
+                    <th><a href="@item.QuestionDetails">Source</a></th>
+                    <td><a href="@Url.Action("Detail","Question", new { id = item.DepartmentId})">Detail</a></td>
+                </tr>
                 }
             </tbody>
         </table>

@@ -78,10 +78,6 @@ namespace niac.Controllers
                     }
                 }
             }
-            else
-            {
-                throw new HttpRequestException("Api not available");
-            }
 
             return View(model);
         }
