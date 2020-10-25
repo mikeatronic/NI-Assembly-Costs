@@ -73,7 +73,7 @@
             </thead>
             <tbody>
 
-                @foreach (var item in Model.Question)
+                @foreach (var item in Model.Question.OrderByDescending(i => i.TabledDate))
                 {
                    <tr>
                        <td>@item.DepartmentName</td>
