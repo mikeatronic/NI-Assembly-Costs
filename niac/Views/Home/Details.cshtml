@@ -80,7 +80,7 @@
                        <td>@item.QuestionText</td>
                        <td>@item.QOralAnswerRequested</td>
                        <td>@item.TabledDate.ToShortDateString()</td>
-                       <th><a href="@item.QuestionDetails">Source</a></th>
+                       <td><a href="@item.QuestionDetails">Source</a></td>
                        <td><a href="@Url.Action("Detail","Question", new { id = item.DocumentId })">Detail</a></td>
                    </tr>
                 }
